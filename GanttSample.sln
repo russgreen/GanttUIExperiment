@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExternalPropertyBinding_2015", "GanttSample\ExternalPropertyBinding_2015.csproj", "{6F5008AF-9CE8-4EF0-843F-E9F41A538B21}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreLibrary", "CoreLibrary\CoreLibrary.csproj", "{B3F46E2D-F8DF-4C0F-AC03-2285ACEBF39D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GantUI", "GantUI\GantUI.csproj", "{582F0AB8-7D9C-4BE1-BD56-17861FE63BEE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{95DB0EE7-B214-4167-B240-9FA75DEE735F}"
+	ProjectSection(SolutionItems) = preProject
+		README.txt = README.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6F5008AF-9CE8-4EF0-843F-E9F41A538B21}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{6F5008AF-9CE8-4EF0-843F-E9F41A538B21}.Debug|x86.ActiveCfg = Debug|x86
+		{6F5008AF-9CE8-4EF0-843F-E9F41A538B21}.Debug|x86.Build.0 = Debug|x86
+		{6F5008AF-9CE8-4EF0-843F-E9F41A538B21}.Release|Any CPU.ActiveCfg = Release|x86
+		{6F5008AF-9CE8-4EF0-843F-E9F41A538B21}.Release|x86.ActiveCfg = Release|x86
+		{6F5008AF-9CE8-4EF0-843F-E9F41A538B21}.Release|x86.Build.0 = Release|x86
+		{B3F46E2D-F8DF-4C0F-AC03-2285ACEBF39D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3F46E2D-F8DF-4C0F-AC03-2285ACEBF39D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3F46E2D-F8DF-4C0F-AC03-2285ACEBF39D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B3F46E2D-F8DF-4C0F-AC03-2285ACEBF39D}.Debug|x86.Build.0 = Debug|Any CPU
+		{B3F46E2D-F8DF-4C0F-AC03-2285ACEBF39D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3F46E2D-F8DF-4C0F-AC03-2285ACEBF39D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3F46E2D-F8DF-4C0F-AC03-2285ACEBF39D}.Release|x86.ActiveCfg = Release|Any CPU
+		{B3F46E2D-F8DF-4C0F-AC03-2285ACEBF39D}.Release|x86.Build.0 = Release|Any CPU
+		{582F0AB8-7D9C-4BE1-BD56-17861FE63BEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{582F0AB8-7D9C-4BE1-BD56-17861FE63BEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{582F0AB8-7D9C-4BE1-BD56-17861FE63BEE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{582F0AB8-7D9C-4BE1-BD56-17861FE63BEE}.Debug|x86.Build.0 = Debug|Any CPU
+		{582F0AB8-7D9C-4BE1-BD56-17861FE63BEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{582F0AB8-7D9C-4BE1-BD56-17861FE63BEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{582F0AB8-7D9C-4BE1-BD56-17861FE63BEE}.Release|x86.ActiveCfg = Release|Any CPU
+		{582F0AB8-7D9C-4BE1-BD56-17861FE63BEE}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6874748C-4DED-4C5C-A927-C10145443034}
+	EndGlobalSection
+EndGlobal

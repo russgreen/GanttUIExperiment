@@ -1,0 +1,206 @@
+﻿<Window x:Class="GantUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GantUI"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        mc:Ignorable="d"
+        Title="{Binding WindowTitle}" Height="500" Width="1080" >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Column="0" HorizontalAlignment = "Left" VerticalAlignment = "Top" Margin="2" Background="White">
+            <MenuItem Header = "File" Background="White">
+                <MenuItem Header = "Export PNG..." HorizontalAlignment = "Left" Width = "160" />
+                <!--Click="MenuItemExportPNG_Click" />-->
+                <MenuItem Header = "Export XML..." HorizontalAlignment = "Left" Width = "160" />
+                <!--Click="MenuItemExportXML_Click"  />-->
+                <Separator HorizontalAlignment = "Left" Width = "160" />
+                <MenuItem Header = "Exit" HorizontalAlignment = "Left" Width = "160" Click = "MenuItemExit_Click" />
+            </MenuItem>
+        </Menu>
+
+        <!--Toolbar and slider-->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <ToolBar Grid.Column="0" 
+                     Background="White" 
+                     ToolBarTray.IsLocked="True"
+                     ToolBar.OverflowMode="AsNeeded">
+                <Button 
+                    IsEnabled="{Binding HasUnsavedChanges}"
+                    Command="{Binding SaveChangesCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Images/Save.png" Width="24" IsEnabled="{Binding HasSelectedTask}">
+                            <Image.Style>
+                                <Style TargetType="Image">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsEnabled" Value="False">
+                                            <Setter Property="Opacity" Value="0.5" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                        <Label Padding="3">Save Changes</Label>
+                    </StackPanel>
+                </Button>
+                <Separator/>
+                <Button IsEnabled="{Binding CanAddTask}"
+                    Command="{Binding AddTaskCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Images/Add.png" Width="24" IsEnabled="{Binding HasSelectedTask}">
+                            <Image.Style>
+                                <Style TargetType="Image">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsEnabled" Value="False">
+                                            <Setter Property="Opacity" Value="0.5" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                        <Label Padding="3">Add Task</Label>
+                    </StackPanel>
+                </Button>
+                <Button IsEnabled="{Binding CanDeleteTask}"
+                    Command="{Binding ConfirmDeleteCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Images/Delete.png" Width="24" IsEnabled="{Binding HasSelectedTask}">
+                            <Image.Style>
+                                <Style TargetType="Image">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsEnabled" Value="False">
+                                            <Setter Property="Opacity" Value="0.5" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                        <Label Padding="3">Delete Task</Label>
+                    </StackPanel>
+                </Button>
+                <!--<Separator/>
+                <Button IsEnabled="{Binding CanIndentTask}"
+                    Command="{Binding IndentTaskCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Images/Indent.png" Width="24" IsEnabled="{Binding HasSelectedTask}">
+                            <Image.Style>
+                                <Style TargetType="Image">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsEnabled" Value="False">
+                                            <Setter Property="Opacity" Value="0.5" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                        <Label Padding="3">Indent</Label>
+                    </StackPanel>
+                </Button>
+                <Button IsEnabled="{Binding CanOutdentTask}"
+                    Command="{Binding OutdentTaskCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Images/Outdent.png" Width="24" IsEnabled="{Binding HasSelectedTask}">
+                            <Image.Style>
+                                <Style TargetType="Image">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsEnabled" Value="False">
+                                            <Setter Property="Opacity" Value="0.5" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                        <Label Padding="3">Outdent</Label>
+                    </StackPanel>
+                </Button>-->
+                <Separator/>
+                <CheckBox x:Name="CheckBoxShowWeekends" Content="Show Weekends" IsChecked="False"/>
+                <CheckBox x:Name="CheckBoxShowCriticalPath" Content="Show Critical Path" IsChecked="False" />
+                <CheckBox x:Name="CheckBoxShowProjectDates"  Content="Show Key Dates" IsChecked="True" />
+            </ToolBar>
+
+            <Slider Grid.Column="1"
+                    VerticalAlignment="Center"
+                    Width="300"
+                    Minimum="30" 
+                    Maximum="200" 
+                    Value="{Binding ZoomFactor}" 
+                    Ticks="30 40 50 60 70 80 90 100 120 200" 
+                    TickPlacement="Both" 
+                    IsSnapToTickEnabled="True">
+            </Slider>
+
+            <TextBlock Grid.Column="2" 
+                       Width="40"
+                       FontSize="14"
+                       FontWeight="Bold"
+                       Text="{Binding ZoomFactor, StringFormat=\{0:n0\}}" 
+                       TextTrimming="CharacterEllipsis"
+                       TextWrapping="NoWrap" 
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Center" />
+        </Grid>
+
+        <syncfusion:GanttControl Grid.Column="0" Grid.Row="2"  x:Name="Gantt"                                 
+                                 ItemsSource="{Binding TaskCollection}"                                  
+                                 WeekBeginsOn="Monday" 
+                                 ShowWeekends="{Binding ElementName=CheckBoxShowWeekends, Path=IsChecked}"
+                                 ShowCriticalPath="{Binding ElementName=CheckBoxShowCriticalPath, Path=IsChecked}"
+                                 ValidationMode="Auto"
+                                 StripLines="{Binding StripCollection}"
+                                 ShowStripLines="{Binding ElementName=CheckBoxShowProjectDates, Path=IsChecked}"
+                                 GridWidth="Auto" 
+                                 ProgressIndicatorBackground="White"
+                                 TaskNodeBackground="#FF0072C6"
+                                 GridHeaderBackground="White"
+                                 GridHeaderForeground="#000040"
+                                 ScheduleBackground="White"
+                                 ScheduleForeground="#000040"
+                                 ScheduleType="YearWithDays"
+                                 VisualStyle="Office2010Silver"
+                                 ZoomFactor="{Binding ZoomFactor}"  
+                                 UseOnDemandSchedule="True"
+                                 UseAutoUpdateHierarchy="True"
+                                 Loaded="Gantt_Loaded" 
+                                 ZoomChanged="Gantt_ZoomChanged">
+            <syncfusion:GanttControl.CurrentDateLine>
+                <Line Stroke="Red" StrokeThickness="1" />
+            </syncfusion:GanttControl.CurrentDateLine>
+            <syncfusion:GanttControl.TaskAttributeMapping>
+                <syncfusion:TaskAttributeMapping
+                    ChildMapping="ChildTasks"
+                    TaskIdMapping="TaskID" 
+                    TaskNameMapping="TaskName" 
+                    StartDateMapping="StartDate"
+                    FinishDateMapping="EndDate"
+                    ProgressMapping="Progress"
+                    DurationMapping="Duration" 
+                    MileStoneMapping="Milestone"
+                    PredecessorMapping="Predecessors">
+                </syncfusion:TaskAttributeMapping>
+            </syncfusion:GanttControl.TaskAttributeMapping>
+        </syncfusion:GanttControl>
+
+        <StatusBar Grid.Column="0" Grid.Row="3" />
+
+    </Grid>
+</Window>

@@ -1,0 +1,18 @@
+﻿tblTasks
+TaskID
+ParentID
+TaskName
+Progress
+StartDate
+EndDate
+ProjectID
+....
+and other properties not relevent to Gantt chart
+
+
+tblTasksLinks
+LinkID
+StartID		//TaskID of the preceeding task
+EndID		//TaskID the task the predeceddor text will appear on in the gantt grid
+LinkType 
+Offset
